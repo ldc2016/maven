@@ -1,17 +1,21 @@
 package com.vip.learn.utils;
 
-import com.sun.corba.se.spi.copyobject.CopyobjectDefaults;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.MapListHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -88,6 +92,21 @@ public final class DataBaseHelper {
     }
 
 
+    public static void initDB(){
+        try {
+            String sqlFile = "sql/customer_init.sql";
+            InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(sqlFile);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            String sql = null;
+            while((sql=reader.readLine()) != null){
+                executeUpdate(sql);
+            }
+        } catch (IOException e) {
+            LOGGER.error("execute query error!",e);
+            throw new RuntimeException();
+        }
+    }
+
     /**
      * 查询实体List
      * @param entityClass
@@ -119,19 +138,73 @@ public final class DataBaseHelper {
      * @param <T>
      * @return
      */
-    public static <T> T queryEntity(Class<T> entityClass, String sql, Object... params){
+    public static <T> T queryEntity(Class<T> entityClass, String sql, Object... params) {
         T entity;
         try {
             Connection conn = getConnection();
-            entity = QUERY_RUNNER.query(conn,sql,new BeanHandler<T>(entityClass),params);
-        }catch (SQLException e){
-            LOGGER.error("query entity failure!",e);
+            entity = QUERY_RUNNER.query(conn, sql, new BeanHandler<T>(entityClass), params);
+        } catch (SQLException e) {
+            LOGGER.error("query entity failure!", e);
             throw new RuntimeException();
-        }finally {
+        } finally {
             closeConnection();
         }
 
         return entity;
     }
 
+    /**
+     * 查询实体List,动态设定sql参数,Map是列名于列值得映射
+     * @param sql
+     * @param params
+     * @return
+     */
+    public static List<Map<String,Object>> executeQuery(String sql, Object... params){
+        List<Map<String,Object>> resultList;
+        try {
+            Connection conn = getConnection();
+            resultList = QUERY_RUNNER.query(conn,sql,new MapListHandler(),params);
+        }catch (SQLException e){
+            LOGGER.error("query entity list failure!",e);
+            throw new RuntimeException();
+        }finally {
+            closeConnection();
+        }
+
+        return resultList;
+    }
+
+    /**
+     * update实体信息
+     * @param sql
+     * @param params
+     * @return
+     */
+    public static int executeUpdate(String sql, Object... params){
+        int result;
+        try {
+            Connection conn = getConnection();
+            result = QUERY_RUNNER.update(conn,sql,params);
+        }catch (SQLException e){
+            LOGGER.error("execute update failure!",e);
+            throw new RuntimeException();
+        }finally {
+            closeConnection();
+        }
+
+        return result;
+    }
+
+    /**
+     * 删除实体对象
+     * @return
+     */
+    public static <T> boolean deleteEntity(Class<T> entityClass, long id){
+        String sql = "DELETE FROM " + getTableName(entityClass) + " where id = " + id;
+        return executeUpdate(sql,id)==1;
+    }
+
+    public static <T> String getTableName(Class<T> entityClass){
+        return entityClass.getSimpleName();
+    }
 }

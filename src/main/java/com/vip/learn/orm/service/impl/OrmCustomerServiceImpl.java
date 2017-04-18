@@ -6,11 +6,6 @@ import com.vip.learn.utils.DataBaseHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -30,7 +25,9 @@ public class OrmCustomerServiceImpl implements OrmCustomerService {
 
     @Override
     public Customer getCustomer(long id) {
-        return null;
+        String querySql = "SELECT * from customer where id = " + id;
+        Customer customer = DataBaseHelper.queryEntity(Customer.class,querySql);
+        return customer;
     }
 
     @Override
