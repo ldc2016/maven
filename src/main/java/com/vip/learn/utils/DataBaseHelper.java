@@ -85,7 +85,8 @@ public final class DataBaseHelper {
                 LOGGER.error("close connection error!",e);
                 throw new RuntimeException();
             }finally {
-                CONNECTION_HOLDER.remove(); // 当当前线程使用完了connection后，需要移除ThreadLocal中的Connection
+                CONNECTION_HOLDER.remove(); // 当当前线程使用完了connection后，
+                                            // 需要移除ThreadLocal中的Connection,确保两次请求中ThreadLocal中的数据库连接不一样，消除状态
             }
         }
 
@@ -93,6 +94,7 @@ public final class DataBaseHelper {
 
 
     public static void initDB(){
+        LOGGER.error("开始初始化数据库!");
         try {
             String sqlFile = "sql/customer_init.sql";
             InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(sqlFile);
@@ -105,6 +107,7 @@ public final class DataBaseHelper {
             LOGGER.error("execute query error!",e);
             throw new RuntimeException();
         }
+        LOGGER.error("初始化数据库结束!");
     }
 
     /**
