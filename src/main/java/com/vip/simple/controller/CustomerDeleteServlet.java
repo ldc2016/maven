@@ -1,4 +1,4 @@
-package com.vip.learn.controller;
+package com.vip.simple.controller;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,8 +10,8 @@ import java.io.IOException;
 /**
  * Created by dacheng.liu on 2017/4/13.
  */
-@WebServlet("/edit")
-public class CustomerEditServlet extends HttpServlet{
+@WebServlet("/delete")
+public class CustomerDeleteServlet extends HttpServlet{
 
     // TODO: 2017/4/13
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)

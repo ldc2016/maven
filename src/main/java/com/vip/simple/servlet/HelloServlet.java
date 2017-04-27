@@ -1,4 +1,4 @@
-package com.vip.learn.servlet;
+package com.vip.simple.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

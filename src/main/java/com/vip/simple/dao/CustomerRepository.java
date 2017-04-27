@@ -1,4 +1,4 @@
-package com.vip.learn.dao;
+package com.vip.simple.dao;
 
 /**
  * Created by dacheng.liu on 2017/4/13.

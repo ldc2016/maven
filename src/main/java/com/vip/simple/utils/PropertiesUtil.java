@@ -1,7 +1,6 @@
-package com.vip.learn.utils;
+package com.vip.simple.utils;
 
 
-import com.sun.org.apache.bcel.internal.generic.ATHROW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

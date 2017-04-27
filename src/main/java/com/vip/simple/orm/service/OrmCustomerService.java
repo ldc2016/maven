@@ -1,10 +1,9 @@
-package com.vip.learn.orm.service;
+package com.vip.simple.orm.service;
 
-import com.vip.learn.model.Customer;
+import com.vip.simple.model.Customer;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Observer;
 
 /**
  * Created by dacheng.liu on 2017/4/13.

@@ -1,4 +1,4 @@
-package com.vip.learn.model;
+package com.vip.simple.model;
 
 import lombok.Data;
 

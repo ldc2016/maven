@@ -1,4 +1,4 @@
-package com.vip.learn.utils;
+package com.vip.simple.utils;
 
 /**
  * Created by dacheng.liu on 2017/4/17.

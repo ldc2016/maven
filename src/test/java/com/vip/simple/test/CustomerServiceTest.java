@@ -1,17 +1,13 @@
-package com.vip.learn.test;
+package com.vip.simple.test;
 
-import com.vip.learn.model.Customer;
-import com.vip.learn.orm.service.OrmCustomerService;
-import com.vip.learn.orm.service.impl.OrmCustomerServiceImpl;
-import com.vip.learn.utils.DataBaseHelper;
+import com.vip.simple.model.Customer;
+import com.vip.simple.orm.service.OrmCustomerService;
+import com.vip.simple.orm.service.impl.OrmCustomerServiceImpl;
+import com.vip.simple.utils.DataBaseHelper;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

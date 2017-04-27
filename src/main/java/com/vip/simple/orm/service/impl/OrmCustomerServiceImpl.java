@@ -1,8 +1,8 @@
-package com.vip.learn.orm.service.impl;
+package com.vip.simple.orm.service.impl;
 
-import com.vip.learn.model.Customer;
-import com.vip.learn.orm.service.OrmCustomerService;
-import com.vip.learn.utils.DataBaseHelper;
+import com.vip.simple.model.Customer;
+import com.vip.simple.orm.service.OrmCustomerService;
+import com.vip.simple.utils.DataBaseHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

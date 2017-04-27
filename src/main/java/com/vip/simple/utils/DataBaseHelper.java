@@ -1,4 +1,4 @@
-package com.vip.learn.utils;
+package com.vip.simple.utils;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.commons.dbutils.QueryRunner;
