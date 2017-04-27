@@ -34,8 +34,11 @@ public final class ConfigHelper {
     }
 
     public static String getAppJspPath(){
-        return properties.getProperty(ConfigConstant.JSP_PATH,"/WEB-INF/jsp");
+        return properties.getProperty(ConfigConstant.JSP_PATH,"/WEB-INF/jsp/");
     }
 
+    public static String getAppAssetPath(){
+        return properties.getProperty(ConfigConstant.JSP_PATH,"/WEB-INF/asset/");
+    }
 
 }
