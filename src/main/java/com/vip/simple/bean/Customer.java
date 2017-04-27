@@ -1,8 +1,6 @@
-package com.vip.simple.model;
+package com.vip.simple.bean;
 
 import lombok.Data;
-
-import javax.xml.bind.annotation.XmlInlineBinaryData;
 
 /**
  * Created by dacheng.liu on 2017/4/13.

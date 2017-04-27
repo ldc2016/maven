@@ -1,6 +1,6 @@
 package com.vip.simple.orm.service;
 
-import com.vip.simple.model.Customer;
+import com.vip.simple.bean.Customer;
 
 import java.util.List;
 import java.util.Map;

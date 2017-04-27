@@ -1,6 +1,6 @@
 package com.vip.simple.orm.service.impl;
 
-import com.vip.simple.model.Customer;
+import com.vip.simple.bean.Customer;
 import com.vip.simple.orm.service.OrmCustomerService;
 import com.vip.simple.utils.DataBaseHelper;
 import org.slf4j.Logger;
