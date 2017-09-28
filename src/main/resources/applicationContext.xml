@@ -17,7 +17,7 @@
 
     <bean id="myBatisSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource1" />
-        <property name="mapperLocations" value="classpath*:mapper/*Mapper.xml" />
+        <property name="mapperLocations" value="classpath*:com/vip/common/mapper/*.xml" />
     </bean>
 
     <bean id="dataSource1" class="${dataSource}"> <!-- 这些配置Spring在启动时会去conn.properties中找 -->

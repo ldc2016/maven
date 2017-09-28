@@ -66,4 +66,16 @@
         <servlet-name>mvc</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>initCommonDataServlet</servlet-name>
+        <servlet-class>
+            com.vip.springLearn.contextLoader.initCommonDataServlet
+        </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>initCommonDataServlet</servlet-name>
+        <url-pattern>/do/</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -35,7 +35,7 @@
 ////        QUERY_RUNNER = new QueryRunner();
 ////        CONNECTION_HOLDER = new ThreadLocal<>();
 ////
-////        Properties props = PropertiesUtil.loadProps("simpleframework/properties/dbConfig.properties");
+////        Properties props = PropertiesUtil.loadProps("simpleframework/properties/myBatisCfg.properties");
 ////        DRIVER = props.getProperty("jdbc.driver");
 ////        URL = props.getProperty("jdbc.url");
 ////        USERNAME = props.getProperty("jdbc.username");
