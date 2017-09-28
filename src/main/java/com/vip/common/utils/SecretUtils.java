@@ -12,19 +12,10 @@ public class SecretUtils {
 
     // 定义加密算法，有DES、DESede(即3DES)、Blowfish
     private static final String Algorithm = "DESede";
-
-    // private static final String PASSWORD_CRYPT_KEY =
-    // "2012PinganVitality075522628888ForShenZhenBelter075561869839";
     private static final String PASSWORD_CRYPT_KEY = "2015MoankerVipshop";
 
     /*
      * 根据字符串生成密钥字节数组
-     *
-     * @param keyStr 密钥字符串
-     *
-     * @return
-     *
-     * @throws UnsupportedEncodingException
      */
     public static byte[] build3DesKey(String keyStr) throws UnsupportedEncodingException {
         final byte[] key = new byte[24]; // 声明一个24位的字节数组，默认里面都是0
@@ -145,31 +136,6 @@ public class SecretUtils {
         }
         return null;
     }
-
-
-//    public static void main(String[] args) {
-////		final String msg = "3DES加密解密案例";
-////		//System.out.println("【加密前】：" + msg);
-//
-//        // 加密
-//        final String secretArr = SecretUtils.decryptMode("MpvxNyLeQGoHM8uCvJZRwg==", "2015MoankerVipshop");
-//        System.out.println("【加密后】：" + secretArr);
-//
-//        String bankcard = SecretUtils.encryptMode("6216739876543211215", "2015MoankerVipshop");
-//        System.out.println(bankcard);
-//
-//        // 解密
-//        //	final byte[] myMsgArr = SecretUtils.decryptMode("");
-//        //	//System.out.println("【解密后】：" + new String(myMsgArr));
-////
-////		// 加密
-////		final String secretStr = SecretUtils.encryptMode(msg);
-////		//System.out.println("【加密后】：" + secretStr);
-////
-////
-//        //	//System.out.println("【解密后】：" + SecretUtils.decryptMode("VMKAyyNJr85TC/N9dz3mDO0NjaSabSObwMCLPEBNRn0EpHAphexMUg=="));
-//
-//    }
 
 	public static void main(String[] args) {
 		try {
