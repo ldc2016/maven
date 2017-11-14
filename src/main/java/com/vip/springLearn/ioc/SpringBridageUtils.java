@@ -36,11 +36,12 @@ public class SpringBridageUtils {
 
 
         logger.info("****** systemProperty in environment of this applicationContext is :{}",environment.getSystemEnvironment());
-        logger.info("SpringBridageUtils.main, applicationContext is Active :{}",applicationContext.isActive());
+        logger.info("SpringBridageUtilsH啊.main, applicationContext is Active :{}",applicationContext.isActive());
 
         applicationContext.destroy();
 
         logger.info("SpringBridageUtils.main, applicationContext is Active :{}",applicationContext.isActive());
+
     }
 
 }

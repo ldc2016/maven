@@ -13,7 +13,7 @@ public class TxtFileHandlerUtils {
 
     private static Logger logger = LoggerFactory.getLogger(TxtFileHandlerUtils.class);
 
-    private static Reader getReader(String inPutFilePath){
+    public static Reader getReader(String inPutFilePath){
         if(StringUtils.isBlank(inPutFilePath)){
             logger.error("TxtFileHandlerUtils.getReader, filePath is null!");
             return null;
@@ -33,7 +33,7 @@ public class TxtFileHandlerUtils {
         return bufferedReader;
     }
 
-    private static Writer getWriter(String outPutFilePath){
+    public static Writer getWriter(String outPutFilePath){
         if(StringUtils.isBlank(outPutFilePath)){
             logger.error("TxtFileHandlerUtils.getWriter, outPutFilePath is null!");
             return null;
@@ -53,7 +53,7 @@ public class TxtFileHandlerUtils {
         return bufferedWriter;
     }
 
-    private static void closeIoChannel(Reader reader, Writer writer){
+    public static void closeIoChannel(Reader reader, Writer writer){
         if(reader != null){
             try {
                 reader.close();
@@ -74,8 +74,8 @@ public class TxtFileHandlerUtils {
 
     public static void main(String[] args) throws IOException {
 
-        String inPutFilePath = "D:\\理财二类户代扣卡号不一致用户信息.txt";
-        String outPutFilePath = "D:\\理财二类户代扣卡号不一致用户信息_update.txt";
+        String inPutFilePath = "D:\\迁移用户.txt";
+        String outPutFilePath = "D:\\迁移用户_update.txt";
         String lineData = null;
         StringBuilder sb = new StringBuilder();
         int count = 0;
@@ -84,14 +84,14 @@ public class TxtFileHandlerUtils {
 
         while (true){
             if((lineData = bufferedReader.readLine()) != null){
-                if(count<2){
+                if(count<1){
                     sb.append(lineData).append(",");
                 }else{
                     sb.append(lineData);
                 }
 
                 count ++;
-                if(count == 3){
+                if(count == 2){
                     bufferedWriter.write(sb.toString());
                     bufferedWriter.newLine();
                     bufferedWriter.flush();
