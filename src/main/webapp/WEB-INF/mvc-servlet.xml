@@ -2,7 +2,15 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+	   http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+	   http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <context:component-scan base-package="com.vip.common.**.controller" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
@@ -31,4 +39,18 @@
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!--property name="maxUploadSize" value="100000"/-->
     </bean>
+
+    <!--基于AOP实现注解拦截-->
+    <bean id="signInterceptorByAop"  class="com.vip.springLearn.interceptor.SignCheckInterceptor1" />
+    <aop:config>
+        <aop:pointcut id="signInterceptorPointcut" expression="@annotation(com.vip.springLearn.annotation.SignCheck)"/>
+        <aop:advisor advice-ref="signInterceptorByAop" pointcut-ref="signInterceptorPointcut"/>
+    </aop:config>
+
+    <!--基于springMVC 拦截器实现拦截-->
+    <mvc:interceptors>
+        <ref bean="signInterceptor"/>
+    </mvc:interceptors>
+
+    <bean id="signInterceptor" class="com.vip.springLearn.interceptor.SignCheckInterceptor2"/>
 </beans>
