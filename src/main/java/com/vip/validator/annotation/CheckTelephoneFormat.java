@@ -16,8 +16,8 @@ import java.lang.annotation.Target;
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface CheckTelephoneFormat {
-    boolean required() default false;
-    String message() default "";
+    boolean isRequired() default false;
+    String msg() default "";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

@@ -11,8 +11,8 @@ import lombok.Data;
 public class UserModel {
     private String name;
 
-    @CheckDateFormat(format = "yyyy-MM-dd",required = true)
+    @CheckDateFormat(isRequired = true, format = "yyyy-MM-dd")
     private String birthDate;
-    @CheckTelephoneFormat(required = true,message = "座机号码格式有误")
+    @CheckTelephoneFormat(isRequired = true,msg = "座机号码格式有误")
     private String telephone;
 }

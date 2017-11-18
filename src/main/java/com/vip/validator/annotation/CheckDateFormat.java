@@ -16,9 +16,9 @@ import java.lang.annotation.Target;
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface CheckDateFormat {
+    boolean isRequired() default false;
     String format() default "yyyy-MM-dd";
-    boolean required() default false;
-    String message() default "生日日期格式非法";
+    String msg() default "生日日期格式非法";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

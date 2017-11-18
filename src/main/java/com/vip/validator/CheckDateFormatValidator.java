@@ -12,11 +12,11 @@ import java.text.SimpleDateFormat;
 public class CheckDateFormatValidator implements ConstraintValidator<CheckDateFormat,String> {
 
     private String datePattern;
-    private boolean required;
+    private boolean isRequired;
 
     public void initialize(CheckDateFormat checkDateFormat){
         this.datePattern = checkDateFormat.format();
-        this.required = checkDateFormat.required();
+        this.isRequired = checkDateFormat.isRequired();
     }
 
 
@@ -25,11 +25,11 @@ public class CheckDateFormatValidator implements ConstraintValidator<CheckDateFo
         if(fieldValue == null){
             return true;
         }
-        if(required && fieldValue.equals("")){
+        if(isRequired && fieldValue.equals("")){
             return false;
         }
 
-        if(!required && fieldValue.equals("")){
+        if(!isRequired && fieldValue.equals("")){
             return true;
         }
 
