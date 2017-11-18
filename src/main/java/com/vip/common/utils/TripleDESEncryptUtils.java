@@ -8,22 +8,19 @@ import java.io.*;
 /**
  * Created by dacheng.liu on 2017/9/28.
  */
-public class SecretUtils {
+public class TripleDESEncryptUtils {
 
-    // 定义加密算法，有DES、DESede(即3DES)、Blowfish
-    private static final String Algorithm = "DESede";
-    private static final String PASSWORD_CRYPT_KEY = "2015MoankerVipshop";
+    // 定义加密算法，有DES、3DES(即DESede)、Blowfish
+    private static final String encrypt_algorithm = "DESede";
+    private static final String encrypt_key = "2017MockDevelopment";
 
     /*
      * 根据字符串生成密钥字节数组
      */
-    public static byte[] build3DesKey(String keyStr) throws UnsupportedEncodingException {
+    public static byte[] creake3DesKey(String keyStr) throws UnsupportedEncodingException {
         final byte[] key = new byte[24]; // 声明一个24位的字节数组，默认里面都是0
         final byte[] temp = keyStr.getBytes("UTF-8"); // 将字符串转成字节数组
 
-		/*
-         * 执行数组拷贝 System.arraycopy(源数组，从源数组哪里开始拷贝，目标数组，拷贝多少位)
-		 */
         if (key.length > temp.length) {
             // 如果temp不够24位，则拷贝temp数组整个长度的内容到key数组中
             System.arraycopy(temp, 0, key, 0, temp.length);
@@ -42,8 +39,8 @@ public class SecretUtils {
      */
     public static byte[] decryptMode(byte[] src) {
         try {
-            final SecretKey deskey = new SecretKeySpec(build3DesKey(PASSWORD_CRYPT_KEY), Algorithm);
-            final Cipher c1 = Cipher.getInstance(Algorithm);
+            final SecretKey deskey = new SecretKeySpec(creake3DesKey(encrypt_key), encrypt_algorithm);
+            final Cipher c1 = Cipher.getInstance(encrypt_algorithm);
             c1.init(Cipher.DECRYPT_MODE, deskey); // 初始化为解密模式
             return c1.doFinal(src);
         } catch (final Exception e) {
@@ -65,7 +62,7 @@ public class SecretUtils {
         try {
             return new String(decryptMode(Base64.decode(str)));
         } catch (final Exception e1) {
-            ////e1.printStackTrace();
+
         }
         return null;
     }
@@ -75,8 +72,8 @@ public class SecretUtils {
             return null;
         }
         try {
-            final SecretKey deskey = new SecretKeySpec(build3DesKey(key), Algorithm);
-            final Cipher c1 = Cipher.getInstance(Algorithm);
+            final SecretKey deskey = new SecretKeySpec(creake3DesKey(key), encrypt_algorithm);
+            final Cipher c1 = Cipher.getInstance(encrypt_algorithm);
             c1.init(Cipher.DECRYPT_MODE, deskey); // 初始化为解密模式
             return new String(c1.doFinal(Base64.decode(str)));
         } catch (final Exception e) {
@@ -88,15 +85,12 @@ public class SecretUtils {
 
     /**
      * 加密方法
-     *
-     * @param src 源数据的字节数组
-     * @return
      */
     public static byte[] encryptMode(byte[] src) {
         try {
-            final SecretKey deskey = new SecretKeySpec(build3DesKey(PASSWORD_CRYPT_KEY), Algorithm); // 生成密钥
-            final Cipher c1 = Cipher.getInstance(Algorithm); // 实例化负责加密/解密的Cipher工具类
-            c1.init(Cipher.ENCRYPT_MODE, deskey); // 初始化为加密模式
+            final SecretKey deskey = new SecretKeySpec(creake3DesKey(encrypt_key), encrypt_algorithm); // 生成密钥
+            final Cipher c1 = Cipher.getInstance(encrypt_algorithm); // 实例化负责加密/解密的Cipher工具类
+            c1.init(Cipher.ENCRYPT_MODE, deskey);            // 初始化为加密模式
             return c1.doFinal(src);
         } catch (final Exception e) {
             // e
@@ -105,17 +99,14 @@ public class SecretUtils {
     }
 
     /**
-     * 加密方法
-     *
-     * @param str 源数据的字符串
-     * @return
+     * 加密
      */
     public static String encryptMode(String str) {
         if (null == str || "".equals(str.trim())) {
             return null;
         }
-        // 加密
-        final byte[] secretArr = SecretUtils.encryptMode(str.getBytes());
+
+        final byte[] secretArr = TripleDESEncryptUtils.encryptMode(str.getBytes());
         return Base64.encode(secretArr);
 
     }
@@ -126,8 +117,8 @@ public class SecretUtils {
             return null;
         }
         try {
-            final SecretKey deskey = new SecretKeySpec(build3DesKey(key), Algorithm); // 生成密钥
-            final Cipher c1 = Cipher.getInstance(Algorithm); // 实例化负责加密/解密的Cipher工具类
+            final SecretKey deskey = new SecretKeySpec(creake3DesKey(key), encrypt_algorithm); // 生成密钥
+            final Cipher c1 = Cipher.getInstance(encrypt_algorithm); // 实例化负责加密/解密的Cipher工具类
             c1.init(Cipher.ENCRYPT_MODE, deskey); // 初始化为加密模式
             final byte[] secretArr = c1.doFinal(str.getBytes());
             return Base64.encode(secretArr);

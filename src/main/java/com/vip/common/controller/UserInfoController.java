@@ -3,6 +3,7 @@ package com.vip.common.controller;
 import com.alibaba.fastjson.JSON;
 import com.vip.common.entity.UserInfoModel;
 import com.vip.common.service.UserInfoService;
+import com.vip.springLearn.annotation.SignCheck;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +31,7 @@ public class UserInfoController {
      */
     @RequestMapping(value = "/getUserInfoFormDb")
     @ResponseBody
+    @SignCheck
     public String getUserInfoFormDb(String userNo ){
         if(StringUtils.isBlank(userNo)){
             logger.error("userNo is null!");
