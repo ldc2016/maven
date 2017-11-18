@@ -41,4 +41,6 @@ public class UserInfoController {
         logger.error("userInfoModel :{}" ,JSON.toJSONString(userInfoModel));
         return JSON.toJSONString(userInfoModel);
     }
+
+
 }
