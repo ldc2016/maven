@@ -85,6 +85,25 @@
     </bean>
     <!--redis pool config end-->
 
+    <!-- thread pool config start-->
+    <bean id ="springThreadPoolExample"  class ="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor" >
+        <property name ="corePoolSize" value ="10" />
+        <property name ="keepAliveSeconds" value ="30" />
+        <property name ="maxPoolSize" value ="20" />
+        <property name ="queueCapacity" value ="2000" />
+    </bean>
+
+    <bean id ="customThreadPool"  class ="com.vip.threadpool.ComplexPausedableThreadPoolTaskExecutor"  name="customThreadPool" >
+        <property name ="corePoolSize" value ="20" />
+        <property name ="keepAliveSeconds" value ="10" />
+        <property name ="maxPoolSize" value ="50" />
+        <property name ="threadPoolParameterService" ref ="threadPoolParameterService" />
+        <property name ="executableSwitch" value ="THREAD_POOL_PAUSE_SWITCH" />
+        <property name ="needWatchSwitch" value ="true" />
+        <property name ="delay" value ="false" />
+    </bean>
+    <!-- thread pool config end-->
+
 
     <!-- 开发环境配置文件 -->
     <beans profile="development">
