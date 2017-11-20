@@ -8,7 +8,7 @@
     </settings>
 
     <typeAliases>
-        <typeAlias alias="User" type="com.vip.common.entity.UserInfoModel"/>
+        <typeAlias alias="User" type="com.ldc.common.entity.UserInfoModel"/>
     </typeAliases>
 
 <environments default="development">

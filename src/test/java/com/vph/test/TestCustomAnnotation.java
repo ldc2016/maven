@@ -1,7 +1,7 @@
 package com.vph.test;
 
 import com.alibaba.fastjson.JSON;
-import com.vip.validator.model.UserModel;
+import com.ldc.validator.model.UserModel;
 import org.junit.BeforeClass;
 import org.junit.Test;
 

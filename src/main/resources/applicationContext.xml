@@ -5,19 +5,19 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="com.vip.common.repository" />
-    <context:component-scan base-package="com.vip.common.service" />
+    <context:component-scan base-package="com.ldc.common.repository" />
+    <context:component-scan base-package="com.ldc.common.service" />
     <context:annotation-config />
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.vip.common.**.repository" />
+        <property name="basePackage" value="com.ldc.common.**.repository" />
         <property name="sqlSessionFactoryBeanName" value="myBatisSqlSessionFactory" />
         <property name="annotationClass" value="org.springframework.stereotype.Repository" />
     </bean>
 
     <bean id="myBatisSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource1" />
-        <property name="mapperLocations" value="classpath*:com/vip/common/mapper/*.xml" />
+        <property name="mapperLocations" value="classpath*:com/ldc/common/mapper/*.xml" />
     </bean>
 
     <bean id="dataSource1" class="${dataSource}"> <!-- 这些配置Spring在启动时会去conn.properties中找 -->
@@ -29,7 +29,7 @@
 
 
     <!--redis pool config start-->
-    <bean id="abstractRedisCacheManager" class="com.vip.redis.cluster.impl.RedisApiByJedisClientManagerImpl"  abstract="true">
+    <bean id="abstractRedisCacheManager" class="com.ldc.redis.cluster.impl.RedisApiByJedisClientManagerImpl" abstract="true">
         <property name="maxActive">
             <value>${redis.maxActive}</value>
         </property>
@@ -47,7 +47,7 @@
         </property>
     </bean>
 
-    <bean id="redisCacheManager00" class="com.vip.redis.cluster.impl.RedisApiByJedisClientManagerImpl"  init-method="init" parent="abstractRedisCacheManager">
+    <bean id="redisCacheManager00" class="com.ldc.redis.cluster.impl.RedisApiByJedisClientManagerImpl" init-method="init" parent="abstractRedisCacheManager">
         <property name="redisHost">
             <value>${redis.cache00.host.name}</value>
         </property>
@@ -56,7 +56,7 @@
         </property>
     </bean>
 
-    <bean id="redisCacheManager01" class="com.vip.redis.cluster.impl.RedisApiByJedisClientManagerImpl"  init-method="init" parent="abstractRedisCacheManager">
+    <bean id="redisCacheManager01" class="com.ldc.redis.cluster.impl.RedisApiByJedisClientManagerImpl" init-method="init" parent="abstractRedisCacheManager">
         <property name="redisHost">
             <value>${redis.cache01.host.name}</value>
         </property>
@@ -65,7 +65,7 @@
         </property>
     </bean>
 
-    <bean id="redisCacheManager02" class="com.vip.redis.cluster.impl.RedisApiByJedisClientManagerImpl"  init-method="init" parent="abstractRedisCacheManager">
+    <bean id="redisCacheManager02" class="com.ldc.redis.cluster.impl.RedisApiByJedisClientManagerImpl" init-method="init" parent="abstractRedisCacheManager">
         <property name="redisHost">
             <value>${redis.cache02.host.name}</value>
         </property>
@@ -74,7 +74,7 @@
         </property>
     </bean>
 
-    <bean id="redisCacheManager" class="com.vip.redis.cluster.impl.RedisCacheServiceImpl">
+    <bean id="redisCacheManager" class="com.ldc.redis.cluster.impl.RedisCacheServiceImpl">
         <property name="redisCacheMap">
             <map>
                 <entry key="0" value-ref="redisCacheManager00" />
@@ -93,7 +93,7 @@
         <property name ="queueCapacity" value ="2000" />
     </bean>
 
-    <bean id ="customThreadPool"  class ="com.vip.threadpool.ComplexPausedableThreadPoolTaskExecutor"  name="customThreadPool" >
+    <bean id ="customThreadPool" class ="com.ldc.threadpool.ComplexPausedableThreadPoolTaskExecutor" name="customThreadPool" >
         <property name ="corePoolSize" value ="20" />
         <property name ="keepAliveSeconds" value ="10" />
         <property name ="maxPoolSize" value ="50" />

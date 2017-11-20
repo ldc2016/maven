@@ -70,7 +70,7 @@
     <servlet>
         <servlet-name>initCommonDataServlet</servlet-name>
         <servlet-class>
-            com.vip.springLearn.contextLoader.initCommonDataServlet
+            com.ldc.springLearn.contextLoader.initCommonDataServlet
         </servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
