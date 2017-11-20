@@ -2,7 +2,7 @@ package com.ldc.springLearn.interceptor;
 
 import com.alibaba.fastjson.JSON;
 import com.ldc.common.utils.MD5EncryptUtils;
-import com.ldc.common.utils.StringSortTools;
+import com.ldc.common.utils.StringTools;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -49,7 +49,7 @@ public class SignCheckInterceptor2 implements HandlerInterceptor {
                 }
                 requestParams.put(name, valueStr);
             }
-            String paramText = StringSortTools.makeSortString(requestParams);
+            String paramText = StringTools.makeSortString(requestParams);
             LOG.info("******* 加密前的明文参数：{} *******", paramText);
 
             String localSign = MD5EncryptUtils.makeSign(paramText,MD5EncryptUtils.MD5_SIGN_KEY,MD5EncryptUtils.DEFAULT_CHARSET);

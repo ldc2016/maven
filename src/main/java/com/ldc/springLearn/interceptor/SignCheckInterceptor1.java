@@ -2,7 +2,7 @@ package com.ldc.springLearn.interceptor;
 
 import com.ldc.common.utils.MD5EncryptUtils;
 import com.ldc.common.utils.SingCheckRequestParamUtils;
-import com.ldc.common.utils.StringSortTools;
+import com.ldc.common.utils.StringTools;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.slf4j.Logger;
@@ -32,7 +32,7 @@ public class SignCheckInterceptor1 implements MethodInterceptor {
             String remoteSign = SingCheckRequestParamUtils.getParamValueByName(args[1],"sign").toString();
 
             // 对请求参数按key的首字母进行排序
-            String content = StringSortTools.makeSortString(paramMap);
+            String content = StringTools.makeSortString(paramMap);
             LOG.error("==>SignCheckInterceptor1.invoke, 待加密字符串 is {}",content);
 
             String signLocal = MD5EncryptUtils.makeSign(content, MD5EncryptUtils.MD5_SIGN_KEY, MD5EncryptUtils.DEFAULT_CHARSET);
