@@ -104,6 +104,9 @@
     </bean>
     <!-- thread pool config end-->
 
+    <import resource="classpath:/applicationContext-quartz.xml" />
+
+
 
     <!-- 开发环境配置文件 -->
     <beans profile="development">
