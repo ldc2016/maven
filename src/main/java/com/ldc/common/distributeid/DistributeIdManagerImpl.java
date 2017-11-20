@@ -32,8 +32,8 @@ public class DistributeIdManagerImpl extends AbstractDistributedIdManager implem
     public Long reinitializeIdValue(String idKeyName) {
         logger.info("idValue reinitializeIdValue update......");
         try{
-            Long idValue = distributeIdDao.getValueBySequenceName(idKeyName);
-            Integer num= distributeIdDao.updateValueByNameAndCurrentValue(idValue + SCAN_STEP, idKeyName, idValue);
+            Long idValue = distributeIdDao.getIdValueByKeyName(idKeyName);
+            Integer num= distributeIdDao.updateIdValueByKeyNameAndCurrentValue(idValue + SCAN_STEP, idKeyName, idValue);
             if(num!=1){
                 throw new RuntimeException("idValue reInit happen error,please retry again! idKeyName :" + idKeyName);
             }

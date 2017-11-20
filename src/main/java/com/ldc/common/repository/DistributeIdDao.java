@@ -1,8 +1,11 @@
 package com.ldc.common.repository;
 
+import org.springframework.stereotype.Repository;
+
 /**
  * Created by dacheng.liu on 2017/11/20.
  */
+@Repository
 public interface DistributeIdDao {
 
     /**
@@ -22,7 +25,7 @@ public interface DistributeIdDao {
      * @param idKeyName
      * @return
      */
-    Long getValueBySequenceName(String idKeyName);
+    Long getIdValueByKeyName(String idKeyName);
 
     /**
      * UPDATE vcp_sequence SET current_value=#{newIdValue,jdbcType=BIGINT}
@@ -32,5 +35,5 @@ public interface DistributeIdDao {
      * @param currentIdValue
      * @return
      */
-    Integer updateValueByNameAndCurrentValue(long newIdValue, String idKeyName, Long currentIdValue);
+    Integer updateIdValueByKeyNameAndCurrentValue(long newIdValue, String idKeyName, Long currentIdValue);
 }
