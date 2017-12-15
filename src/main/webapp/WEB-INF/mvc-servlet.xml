@@ -48,9 +48,9 @@
     </aop:config>
 
     <!--基于springMVC 拦截器实现拦截-->
-    <mvc:interceptors>
-        <ref bean="signInterceptor"/>
-    </mvc:interceptors>
+    <!--<mvc:interceptors>-->
+        <!--<ref bean="signInterceptor"/>-->
+    <!--</mvc:interceptors>-->
 
-    <bean id="signInterceptor" class="com.ldc.springLearn.interceptor.SignCheckInterceptor2"/>
+    <!--<bean id="signInterceptor" class="com.ldc.springLearn.interceptor.SignCheckInterceptor2"/>-->
 </beans>

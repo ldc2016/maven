@@ -5,11 +5,9 @@ import com.ldc.validator.model.UserModel;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import java.util.Set;
 
 /**
  * Created by dacheng.liu on 2017/11/18.
@@ -28,11 +26,11 @@ public class TestCustomAnnotation {
     @Test
     public void test01(){
         UserModel model = new UserModel();
-        model.setBirthDate("20171118");
-        model.setTelephone("021-5623555");
+//        model.setBirthDate("20171118");
+//        model.setTelephone("021-5623555");
         System.out.println("model :" + JSON.toJSONString(model));
 
-        Set<ConstraintViolation<String>> validate = validator.validate(model.getBirthDate());
-        System.out.println(validate.size());
+//        Set<ConstraintViolation<String>> validate = validator.validate(model.getBirthDate());
+//        System.out.println(validate.size());
     }
 }

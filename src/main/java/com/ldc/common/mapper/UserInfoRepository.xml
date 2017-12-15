@@ -18,14 +18,14 @@
   <select id="getUserInfoModelByUserNo" resultMap="BaseResultMap">
   	select 
   	<include refid="Base_Column_List" />
-  	from vipshop_xfd_users_approve_certid 
+  	from user_info
   	where is_deleted = 0 and uid = #{userNo}
   </select>
 
     <select id="getUserInfoModelByUserNoForTest" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from vipshop_xfd_users_approve_certid
+        from user_info
         where is_deleted = 0 and uid = #{userNo} and sex = 0
     </select>
  </mapper>

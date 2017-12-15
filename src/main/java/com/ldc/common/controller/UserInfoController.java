@@ -31,7 +31,7 @@ public class UserInfoController {
      */
     @RequestMapping(value = "/getUserInfoFormDb")
     @ResponseBody
-    @SignCheck
+//    @SignCheck
     public String getUserInfoFormDb(String userNo ){
         if(StringUtils.isBlank(userNo)){
             logger.error("userNo is null!");
@@ -41,6 +41,5 @@ public class UserInfoController {
         logger.error("userInfoModel :{}" ,JSON.toJSONString(userInfoModel));
         return JSON.toJSONString(userInfoModel);
     }
-
 
 }
