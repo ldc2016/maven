@@ -55,18 +55,12 @@
         </javaClientGenerator>
 
         <!-- table -->
-        <!--<table tableName="contract_conf" domainObjectName="ContractConf"-->
-               <!--enableCountByExample="false" enableUpdateByExample="false"-->
-               <!--enableSelectByExample="false" selectByExampleQueryId="false"-->
-               <!--enableDeleteByExample="false">-->
-            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
-        <!--</table>-->
+        <table tableName="user" domainObjectName="UserPO"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false"
+               enableDeleteByExample="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
 
-        <!--<table tableName="CTAS_FEE_BASE" domainObjectName="FeeBase"-->
-               <!--enableCountByExample="false" enableUpdateByExample="false"-->
-               <!--enableDeleteByExample="false" enableSelectByExample="false"-->
-               <!--selectByExampleQueryId="false">-->
-            <!--<columnRenamingRule searchString="^D_"  replaceString=""/>-->
-        <!--</table>-->
     </context>
 </generatorConfiguration>

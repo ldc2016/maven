@@ -33,13 +33,26 @@ public class UserInfoController {
     @ResponseBody
 //    @SignCheck
     public String getUserInfoFormDb(String userNo ){
-        if(StringUtils.isBlank(userNo)){
-            logger.error("userNo is null!");
-            return "please input userNo!";
-        }
+//        if(StringUtils.isBlank(userNo)){
+//            logger.error("userNo is null!");
+//            return "please input userNo!";
+//        }
         UserInfoModel userInfoModel = userInfoService.getUserInfoModelByUserNo(userNo);
         logger.error("userInfoModel :{}" ,JSON.toJSONString(userInfoModel));
         return JSON.toJSONString(userInfoModel);
     }
+
+
+    /**
+     * 测试
+     * @return
+     */
+    @RequestMapping(value = "/testControllerAdvice")
+    @ResponseBody
+//    @SignCheck
+    public void testControllerAdvice(){
+        throw new IllegalArgumentException("参数不合法，请检查，重新输入！");
+    }
+
 
 }

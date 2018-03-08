@@ -18,7 +18,7 @@ public class BusinessAroundLoggerAspect {
     private static final Logger LOGGER = LoggerFactory.getLogger(BusinessAroundLoggerAspect.class);
 
     // 定义切点
-    @Pointcut("execution(public * com.ldc.common.service.*.*(..))")
+    @Pointcut("execution(public * com.ldc.common.service.UserInfoService.*(..))")
     public void pointCutMethod() {
 
     }

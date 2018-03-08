@@ -20,7 +20,7 @@ public class MyBatisLearnTest {
 
     public static void main(String[] args) throws IOException {
 
-        Reader reader = Resources.getResourceAsReader("myBatis-configuration.xml");
+        Reader reader = Resources.getResourceAsReader("com/ldc/mybatis/config/myBatis-configuration.xml");
         SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(reader);
         SqlSession sqlSession = sessionFactory.openSession();
 

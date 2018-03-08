@@ -1,5 +1,8 @@
 package com.ldc.common.enums;
 
+import java.lang.reflect.Field;
+import java.math.BigDecimal;
+
 /**
  * Created by dacheng.liu on 2017/8/24.
  */
@@ -11,6 +14,8 @@ public class SimpleEnumTest {
 
         // 2.测试枚举实例可否用“==”
         testCompareUseEnum(SeasonEnum.SPRING,SeasonEnum.AUTUMN);
+
+        System.out.println("bigdecimal: "+ new BigDecimal("10000.00").toString());
     }
 
     private static void testCompareUseEnum(SeasonEnum seasonEnum1, SeasonEnum seasonEnum2) {
